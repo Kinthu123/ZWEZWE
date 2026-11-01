@@ -1,7 +1,7 @@
 # 0005. Add or update documents: guarded JSON upsert
 
 **Date**: 2026-11-01
-**Status**: In Progress
+**Status**: Accepted
 
 ## Summary
 
@@ -124,9 +124,9 @@ The real risk is a stranger changing your documents during the presentation, and
 
 ## Build plan
 
-1. [ ] Add `ALLOW_UPLOADS` and `MAX_DOC_CHARS` to `app/config.py`, satisfies **AC-3**, **AC-4**
-2. [ ] `DocumentRequest` and `DocumentResponse` models and `POST /documents` in `app/main.py` (flag check, temp write, index, atomic rename, cleanup), satisfies **AC-1**, **AC-2**, **AC-4**, **AC-5**, **AC-6**
-3. [ ] Run the critical scenarios against the live server, satisfies **AC-1** to **AC-6**
+1. [x] Add `ALLOW_UPLOADS` and `MAX_DOC_CHARS` to `app/config.py`, satisfies **AC-3**, **AC-4**
+2. [x] `DocumentRequest` and `DocumentResponse` models and `POST /documents` in `app/main.py` (flag check, temp write, index, atomic rename, cleanup), satisfies **AC-1**, **AC-2**, **AC-4**, **AC-5**, **AC-6**
+3. [x] Run the critical scenarios against the live server, satisfies **AC-1** to **AC-6**
 
 ## Consequences
 

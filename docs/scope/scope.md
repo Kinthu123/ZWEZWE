@@ -19,7 +19,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | 6 | Ask and answer | Slice 1 | done |
 | 7 | Search without the LLM | Slice 2 | done |
 | 8 | Health check | Slice 3 | done |
-| 9 | Add or update documents | Slice 4 | in-progress |
+| 9 | Add or update documents | Slice 4 | done |
 | 10 | Question log | Slice 5 | planned |
 | 11 | Demo readiness | Slice 6 | planned |
 
@@ -103,14 +103,14 @@ code in `app/main.py` (`GET /health`)
 
 ## Slice 4: Add or update documents
 
-### 9. Add or update documents · in-progress
+### 9. Add or update documents · done
 Add a new help document or replace an existing one through the API, and have it searchable right away.
 **Done when:** a posted document is saved and indexed again, an answer can cite it immediately, and unsafe document names (path tricks, odd characters) are rejected.
 - [x] Design it (spec): `/architect add or update documents`
-- [ ] Build it: `/develop add or update documents`
-   - [ ] Guarded `POST /documents` with temp write, index, atomic rename (AC-1 to AC-6)
-- [ ] Verify it: `/check verify add or update documents`
-Spec [0005](../specs/0005-add-update-documents.md)
+- [x] Build it: `/develop add or update documents`
+   - [x] Guarded `POST /documents` with temp write, index, atomic rename (AC-1 to AC-6)
+- [x] Verify it: all 6 scenarios run live on test copies during `/develop`
+Spec [0005](../specs/0005-add-update-documents.md) · code in `app/main.py` (`POST /documents`)
 
 ## Slice 5: Question log
 
