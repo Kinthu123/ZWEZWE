@@ -1,0 +1,29 @@
+# Devices and Playback
+
+Resonance works on phones, tablets, computers, the web, TVs, game consoles, cars, smart speakers, and watches. You sign in with the same account on every device, and your library and playlists stay in sync.
+
+Supported devices and minimum versions:
+- iPhone and iPad: iOS and iPadOS 16 or later.
+- Android phones and tablets: Android 9 or later.
+- Desktop app: Windows 10 or later, and macOS 12 Monterey or later.
+- Web player at listen.resonance.example: the latest two versions of Chrome, Edge, Firefox, and Safari.
+- Smart TVs: Samsung (2019 or newer), LG webOS 5 or later, Android TV and Google TV, Apple TV (tvOS 16 or later), and Fire TV.
+- Cars: Apple CarPlay and Android Auto.
+- Watches: Apple Watch (watchOS 9 or later) and Wear OS 3 or later, including offline downloads to the watch on Premium.
+
+One stream at a time: each account can play on one device at a time. If you start playing on a second device, the first one pauses and shows "Playing on another device". This applies to every plan; on Family and Duo plans each member has their own account, so members can listen at the same time. Downloaded music played in Offline mode does not count as a stream.
+
+Resonance Connect: you can control playback on another device that is on the same Wi-Fi network, such as a speaker, TV, or console. Tap the speaker icon at the bottom of the Now Playing screen and pick a device. Your phone becomes a remote, and music keeps playing even if your phone's battery runs out. Connect is available on all plans; on Resonance Free, Connect works with speakers and TVs but shuffle rules still apply.
+
+Streaming quality: in Settings, then Audio quality, you can set Wi-Fi streaming and mobile data streaming separately to Automatic, Normal (96 kbps), High (160 kbps), Very high (320 kbps), or Lossless. Free listeners can choose up to High (160 kbps). Lossless requires Premium and plays at full quality only on wired headphones, built in speakers, or Connect devices that support lossless; most Bluetooth headphones reduce it to their own maximum.
+
+Playback features:
+- Crossfade blends the end of one song into the next, adjustable from 0 to 12 seconds. The default is 0 (off).
+- Gapless playback is always on, so live albums and DJ mixes play without silence between tracks.
+- Volume normalization keeps loudness consistent between tracks and is on by default.
+- The equalizer has 6 bands and 10 presets, on iOS, Android, and the desktop app.
+- Sleep timer stops playback after 5, 10, 15, 30, 45, or 60 minutes, or at the end of the current track.
+
+Troubleshooting playback that stops or skips: first check that the account is not playing on another device. Then try, in this order: restart the app, check your connection or switch to Offline mode, clear the cache in Settings, then Storage, then Clear cache, and finally reinstall the app. Clearing the cache does not delete downloads. If the problem continues, contact support from Help, then Contact us, where live chat is open 24 hours a day.
+
+Signing out everywhere: if you lost a device or shared your password, go to Account, then Security, then Sign out everywhere. This signs out every device except Resonance Kids within an hour.

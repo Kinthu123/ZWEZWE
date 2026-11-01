@@ -1,0 +1,24 @@
+# Artists and Royalties
+
+This guide is for musicians, bands, and labels who want to release music on Resonance and get paid for streams. Listeners do not need it.
+
+Getting your music on Resonance: there are two ways. Labels and most artists release through an approved distributor, which delivers the music and collects royalties for you. Independent artists who own all the rights to their recordings can instead upload directly with Resonance Direct, which is free and keeps 100% of your share of royalties.
+
+Resonance Direct limits and requirements:
+- You must be 18 or older, or have a parent or guardian manage the account.
+- You can release up to 4 releases per calendar month (a single, an EP, or an album each count as one).
+- Audio must be WAV or FLAC, at least 16-bit/44.1 kHz. Uploading 24-bit files lets listeners hear the release in Resonance Hi-Fi.
+- Cover art must be a square JPG or PNG of at least 3000 x 3000 pixels, with no website addresses, social handles, or prices on it.
+- Every release is reviewed before it goes live. Review takes up to 5 business days, so set your release date at least 7 days ahead.
+
+Resonance for Artists: once your first release is live, claim your artist profile at artists.resonance.example. Claiming gives you a verified badge, lets you change your photo and bio, pin a release to the top of your profile, and see real time listener statistics: streams, listeners, saves, playlist adds, and the cities where people listen.
+
+Editorial pitching: from Resonance for Artists you can pitch one unreleased song per release to Resonance's editors for playlist consideration. You must pitch at least 7 days before the release date. Pitching is free; Resonance never charges for playlist placement and never accepts payment for it.
+
+How royalties are calculated: each month Resonance pays 52% of its net revenue from that month (subscriptions plus ads, after taxes and payment fees) to recording rights holders, shared in proportion to each recording's share of total streams that month. A play counts as a stream only after 30 seconds of listening. Songwriters and publishers are paid separately through collecting societies.
+
+Minimum to earn: a track must reach at least 500 streams in the previous 12 months before it earns royalties. Streams below that still count toward your statistics. Streams that Resonance detects as artificial (bots, loops, or paid stream farms) are removed and never paid, and repeated artificial streaming can lead to the release being taken down.
+
+Getting paid with Resonance Direct: royalties are reported monthly and paid 45 days after the end of each month, once your balance reaches at least $10. Smaller balances roll over to the next month and never expire. Payouts go by bank transfer in 40 countries or by PayPal everywhere else. You must submit a tax form in Resonance for Artists before the first payout.
+
+Removing music: you can take a Resonance Direct release down at any time from Resonance for Artists, then Releases, then Take down. It disappears from Resonance within 48 hours, including from listeners' downloads, and any royalties already earned are still paid.

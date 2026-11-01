@@ -13,8 +13,8 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 |---|---------|-------|--------|
 | 1 | Stack & architecture | Foundation | done |
 | 2 | Coding standards & tooling | Foundation | done |
-| 3 | Knowledge record shape | Foundation | planned |
-| 4 | Resonance knowledge documents | Foundation | planned |
+| 3 | Knowledge record shape | Foundation | in-progress |
+| 4 | Resonance knowledge documents | Foundation | done |
 | 5 | Web client design | Foundation | planned |
 | 6 | Ask and answer | Slice 1 | planned |
 | 7 | Search without the LLM | Slice 2 | planned |
@@ -40,15 +40,23 @@ Capture conventions and tooling from the real scaffolded project, then install t
 - [x] Install the tooling: `/develop tooling`
 code in `AGENTS.md`, `pyproject.toml`, `requirements-dev.txt`
 
-### 3. Knowledge record shape · needs a decision
+### 3. Knowledge record shape · in-progress
 How a document becomes searchable records: chunk size and overlap, the id scheme, the metadata each chunk keeps, the similarity measure, and how many chunks are retrieved by default.
 **Done when:** every chunk can be traced back to its source document and position, and indexing again updates records rather than duplicating them.
-- [ ] Design it (spec): `/architect knowledge record shape`
+- [x] Design it (spec): `/architect knowledge record shape`
+- [ ] Build it: `/develop knowledge record shape`
+   - [ ] Config and embeddings with prefixes (AC-3, AC-6)
+   - [ ] Parsing, chunking, and file rules (AC-1, AC-2, AC-8)
+   - [ ] Index lifecycle: rebuild, status, startup hook (AC-3, AC-4, AC-5)
+   - [ ] Search and replace under the lock (AC-6, AC-7, AC-9)
+- [ ] Verify it: `/check verify knowledge record shape`
+Spec [0002](../specs/0002-knowledge-record-shape.md)
 
-### 4. Resonance knowledge documents
+### 4. Resonance knowledge documents · done
 At least six plain text help documents for Resonance, each on a clearly different topic (for example plans and pricing, offline downloads, family and student accounts, devices and playback, artist uploads and royalties, refunds and cancellation). Fictional, consistent with each other, and full of specific facts a demo question can hit.
-**Done when:** six or more documents exist in `knowledge/`, each on a distinct topic, with concrete details (prices, limits, steps) that only these documents can answer.
-- [ ] Write them: `/develop resonance knowledge documents`
+**Done when:** six or more documents exist in `knowledge/`, each on a distinct topic, with concrete details (prices, limits, steps) that only these documents can answer, each with a title on its first line and blank lines between paragraphs (format from spec 0002).
+- [x] Write them: `/develop resonance knowledge documents`
+code in `knowledge/` (6 documents)
 
 ### 5. Web client design · needs a decision
 The look and layout of the single Q&A page: question box, answer area, source list, loading and error states. It is what the instructor and the demo video see first.
