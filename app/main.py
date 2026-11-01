@@ -12,7 +12,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field, StringConstraints
 
-from app import config, rag, vector_store
+from app import config, question_log, rag, vector_store
 from app.errors import ollama_errors
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
@@ -105,17 +105,29 @@ def index() -> FileResponse:
 def ask(request: AskRequest) -> AskResponse:
     """Answer a question about Resonance from its help documents, with sources and timing."""
     start = time.perf_counter()
-    with ollama_errors():
-        hits = vector_store.search(request.question, request.top_k)
-    if not hits or hits[0]["score"] < config.MIN_SCORE:
-        answer, sources, model = rag.OFF_TOPIC_ANSWER, [], "retrieval only"
-    else:
-        context = [hit for hit in hits if hit["score"] >= config.MIN_SCORE]
-        with ollama_errors():
-            answer = rag.generate(request.question, context)
-        sources, model = rag.sources_for(context), config.CHAT_MODEL
+    try:
+        answer, sources, model = _answer(request.question, request.top_k)
+    except HTTPException as exc:
+        elapsed = round((time.perf_counter() - start) * 1000)
+        question_log.log_question(request.question, status=exc.status_code, model=None, sources=[], latency_ms=elapsed)
+        raise
     latency_ms = round((time.perf_counter() - start) * 1000)
+    question_log.log_question(
+        request.question, status=200, model=model, sources=[s["source"] for s in sources], latency_ms=latency_ms
+    )
     return AskResponse(answer=answer, sources=sources, model=model, latency_ms=latency_ms)
+
+
+def _answer(question: str, top_k: int | None) -> tuple[str, list[dict], str]:
+    """Retrieve, apply the relevance cutoff, and generate: returns (answer, sources, model)."""
+    with ollama_errors():
+        hits = vector_store.search(question, top_k)
+    if not hits or hits[0]["score"] < config.MIN_SCORE:
+        return rag.OFF_TOPIC_ANSWER, [], "retrieval only"
+    context = [hit for hit in hits if hit["score"] >= config.MIN_SCORE]
+    with ollama_errors():
+        answer = rag.generate(question, context)
+    return answer, rag.sources_for(context), config.CHAT_MODEL
 
 
 @app.post("/search", response_model=SearchResponse)
