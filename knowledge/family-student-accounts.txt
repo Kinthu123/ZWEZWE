@@ -1,0 +1,23 @@
+# Family and Student Accounts
+
+This guide covers Premium Family, Premium Duo, and Premium Student: who can join, how to invite people, and how verification works. Prices are listed in the Plans and Pricing guide.
+
+Premium Family is for up to 6 people, including the plan manager, who live at the same home address. The plan manager is the person who pays. Every member gets their own Premium account with separate playlists, recommendations, and listening history; members never see each other's listening.
+
+Inviting family members: the plan manager opens Account, then Premium Family, then Invite member, and sends the invite link by text, email, or any messaging app. Each link works once and expires after 7 days. The person invited signs in (or creates a free account), confirms the home address, and is moved onto the plan immediately. If they had their own paid Premium before, that subscription is cancelled automatically and they are refunded any unused days.
+
+Address rules: all members of a Family or Duo plan must live at the plan manager's home address. Members confirm the address when they join, and Resonance may ask members to confirm it again, at most once every 12 months. A member who cannot confirm the address within 14 days of being asked is moved back to Resonance Free.
+
+Removing and switching members: the plan manager can remove a member at any time from Account, then Premium Family, then Manage members. A member removed from a plan becomes a Free listener but keeps all their playlists. Each person can join a new Family or Duo plan at most once every 12 months.
+
+Resonance Kids: Family plans include Resonance Kids, a separate app for children under 13. The plan manager creates a child's account from Manage members, then Add a child account. Kids accounts play only content picked by Resonance's editors for children, explicit content is always blocked, and the child cannot change this setting. Kids accounts count toward the 6 member limit.
+
+Explicit content filter: the plan manager can turn the explicit content filter on or off for any member aged under 18. When it is on, songs marked Explicit are greyed out and cannot be played.
+
+Premium Duo works the same way as Family but for exactly 2 people at the same address, both with their own Premium account. Duo does not include Resonance Kids.
+
+Premium Student is for students aged 18 or over who are enrolled at an accredited college or university. To join, go to the Student page and verify your enrollment through CampusCheck, Resonance's verification partner, using your school email or an enrollment document. Verification usually takes a few minutes and at most 3 business days.
+
+Student renewals: student status must be verified again every 12 months, and you can stay on Premium Student for a maximum of 48 months (4 years) in total. If you do not reverify, or once you reach 48 months, your account moves to Premium Individual at the regular $10.99 per month price, and you receive an email 14 days before that change.
+
+Student and Family cannot be combined: a Student account cannot be a member of a Family or Duo plan at the same time. Joining a Family plan ends your Student subscription.
