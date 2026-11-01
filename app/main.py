@@ -7,7 +7,7 @@ from contextlib import asynccontextmanager
 from typing import Annotated
 
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field, StringConstraints
 
 from app import config, rag, vector_store
@@ -55,6 +55,32 @@ class AskResponse(BaseModel):
     latency_ms: int
 
 
+class SearchRequest(BaseModel):
+    query: Question
+    top_k: Annotated[int, Field(ge=1, le=config.TOP_K_MAX)] | None = None
+
+
+class SearchResult(Source):
+    text: str
+    chunk: int
+
+
+class SearchResponse(BaseModel):
+    query: str
+    results: list[SearchResult]
+    latency_ms: int
+
+
+class Health(BaseModel):
+    status: str
+    ollama: bool
+    models: dict[str, bool]
+    chunks: int
+    last_rebuild_ok: bool | None
+    last_rebuild_at: str | None
+    error: str | None
+
+
 @app.get("/", include_in_schema=False)
 def index() -> FileResponse:
     return FileResponse(config.WEB_DIR / "index.html")
@@ -75,3 +101,37 @@ def ask(request: AskRequest) -> AskResponse:
         sources, model = rag.sources_for(context), config.CHAT_MODEL
     latency_ms = round((time.perf_counter() - start) * 1000)
     return AskResponse(answer=answer, sources=sources, model=model, latency_ms=latency_ms)
+
+
+@app.post("/search", response_model=SearchResponse)
+def search(request: SearchRequest) -> SearchResponse:
+    """Return the most relevant help passages for a query, without calling the chat model."""
+    start = time.perf_counter()
+    with ollama_errors():
+        hits = vector_store.search(request.query, request.top_k)
+    latency_ms = round((time.perf_counter() - start) * 1000)
+    return SearchResponse(query=request.query, results=hits, latency_ms=latency_ms)
+
+
+def _with_tag(name: str) -> str:
+    """Ollama lists untagged models as `name:latest`."""
+    return name if ":" in name else f"{name}:latest"
+
+
+@app.get("/health", response_model=Health, responses={503: {"model": Health}})
+def health() -> JSONResponse:
+    """Report whether Ollama and both models are available, and the state of the index. 503 when degraded."""
+    try:
+        available = {model.model for model in rag.client.list().models}
+        reachable = True
+    except Exception as exc:
+        logger.warning("Health check could not reach Ollama: %s", exc)
+        available, reachable = set(), False
+    models = {
+        config.EMBED_MODEL: _with_tag(config.EMBED_MODEL) in available,
+        config.CHAT_MODEL: _with_tag(config.CHAT_MODEL) in available,
+    }
+    index = vector_store.index_status()
+    healthy = reachable and all(models.values()) and index["chunks"] > 0
+    body = Health(status="ok" if healthy else "degraded", ollama=reachable, models=models, **index)
+    return JSONResponse(body.model_dump(), status_code=200 if healthy else 503)

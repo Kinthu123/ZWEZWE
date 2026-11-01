@@ -17,8 +17,8 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | 4 | Resonance knowledge documents | Foundation | done |
 | 5 | Web client design | Foundation | done |
 | 6 | Ask and answer | Slice 1 | done |
-| 7 | Search without the LLM | Slice 2 | planned |
-| 8 | Health check | Slice 3 | planned |
+| 7 | Search without the LLM | Slice 2 | done |
+| 8 | Health check | Slice 3 | done |
 | 9 | Add or update documents | Slice 4 | planned |
 | 10 | Question log | Slice 5 | planned |
 | 11 | Demo readiness | Slice 6 | planned |
@@ -85,17 +85,21 @@ Spec [0004](../specs/0004-ask-and-answer.md) · code in `app/rag.py`, `app/error
 
 ## Slice 2: Search without the LLM
 
-### 7. Search without the LLM
+### 7. Search without the LLM · done
 Return the most relevant chunks for a query without calling the chat model, to inspect and debug retrieval.
 **Done when:** a search returns the top chunks with their source and score, and the number of results is adjustable within safe limits.
-- [ ] Build it: `/develop search without the llm`
+- [x] Build it: `/develop search without the llm`
+- [x] Verify it: happy path, 422 validation, and 503 with Ollama down checked during `/develop`
+code in `app/main.py` (`POST /search`)
 
 ## Slice 3: Health check
 
-### 8. Health check
+### 8. Health check · done
 A quick status check showing whether the model server is reachable and how many chunks are indexed.
 **Done when:** the check reports healthy with a chunk count when everything runs, and reports clearly when the model server is down.
-- [ ] Build it: `/develop health check`
+- [x] Build it: `/develop health check`
+- [x] Verify it: ok (200), Ollama down (503), and missing model (503) checked during `/develop`
+code in `app/main.py` (`GET /health`)
 
 ## Slice 4: Add or update documents
 
