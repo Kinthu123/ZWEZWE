@@ -1,7 +1,7 @@
 # 0004. Ask and answer: grounded answers with a relevance cutoff
 
 **Date**: 2026-11-01
-**Status**: In Progress
+**Status**: Accepted
 
 ## Summary
 
