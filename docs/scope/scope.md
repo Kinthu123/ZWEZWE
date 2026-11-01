@@ -21,7 +21,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | 8 | Health check | Slice 3 | done |
 | 9 | Add or update documents | Slice 4 | done |
 | 10 | Question log | Slice 5 | done |
-| 11 | Demo readiness | Slice 6 | planned |
+| 11 | Demo readiness | Slice 6 | in-progress |
 
 ## Foundations
 
@@ -123,10 +123,13 @@ code in `app/question_log.py`, `app/main.py` (JSON Lines in `questions.log`)
 
 ## Slice 6: Demo readiness
 
-### 11. Demo readiness
+### 11. Demo readiness · in-progress
 Make the system easy to run and to try in class: one clear start command, a short README, and a set of demo questions that show off each document.
 **Done when:** a fresh clone starts with the documented commands, the instructor can open the page from another device on the same network (rehearsed from a phone, with a hotspot fallback, from spec 0001), and a list of demo questions covers every document.
-- [ ] Build it: `/develop demo readiness`
+- [x] Build it: `/develop demo readiness` (README with setup, demo questions, rehearsal checklist; `scripts/demo.sh`)
+- [x] Fresh clone setup and LAN address checked during `/develop`
+- [ ] Rehearse from a real phone on the classroom (or hotspot) Wi-Fi: you
+code in `README.md`, `scripts/demo.sh`
 
 ## Deferred
 Out of scope for the current build pass, kept so the plan stays honest.
