@@ -16,7 +16,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | 3 | Knowledge record shape | Foundation | done |
 | 4 | Resonance knowledge documents | Foundation | done |
 | 5 | Web client design | Foundation | in-progress |
-| 6 | Ask and answer | Slice 1 | planned |
+| 6 | Ask and answer | Slice 1 | in-progress |
 | 7 | Search without the LLM | Slice 2 | planned |
 | 8 | Health check | Slice 3 | planned |
 | 9 | Add or update documents | Slice 4 | planned |
@@ -71,10 +71,17 @@ Spec [0003](../specs/0003-web-client-design.md) · code in `web/index.html`, `de
 
 ## Slice 1: Ask and answer
 
-### 6. Ask and answer · needs a decision
+### 6. Ask and answer · in-progress
 The core loop and the walking skeleton: documents are indexed at startup, a user types a question in the web page, the API retrieves the best chunks, the chat model answers using only them, and the page shows the answer with its sources.
 **Done when:** a question about Resonance gets a grounded answer with its source documents shown in the page; a question the documents cannot answer gets an honest "I don't know" rather than an invented fact; the response reports how long it took.
-- [ ] Design it (spec): `/architect ask and answer`
+- [x] Design it (spec): `/architect ask and answer`
+- [ ] Build it: `/develop ask and answer`
+   - [ ] Shared Ollama error mapping (AC-8)
+   - [ ] Prompt, generation, cleaning, sources, warm up (AC-4, AC-5, AC-6, AC-9, AC-10)
+   - [ ] `POST /ask` with validation, cutoff path, and timing (AC-1, AC-2, AC-3, AC-7)
+   - [ ] End to end from the page (AC-11)
+- [ ] Verify it: `/check verify ask and answer`
+Spec [0004](../specs/0004-ask-and-answer.md)
 
 ## Slice 2: Search without the LLM
 
