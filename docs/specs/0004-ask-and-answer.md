@@ -27,7 +27,7 @@ Spec 0001 fixes the runtime rules this must follow: plain `def` endpoints, one e
 - **AC-2**: The request body is `{"question": str, "top_k": int (optional)}`. A question that is empty or only whitespace after trimming, or longer than 500 characters, returns 422; a `top_k` outside 1 to 10 returns 422; an omitted `top_k` uses 4.
 - **AC-3**: If no chunk is retrieved or the best score is below `MIN_SCORE` (0.30), the answer is exactly "I can only help with questions about Resonance, like plans, downloads, devices, accounts, artists, and refunds.", `sources` is empty, `model` is `"retrieval only"`, and the chat model is not called.
 - **AC-4**: If the best score is at or above the cutoff but the passages do not answer the question, the answer says "The help documents don't cover that." and points to live chat in Help, then Contact us, without inventing any fact.
-- **AC-5**: Answers are in English, 2 to 5 short sentences (a bulleted list only for steps or several items), and quote prices, limits, durations, and menu paths exactly as the documents state them.
+- **AC-5**: Answers are in English, one short paragraph of 2 to 5 sentences that starts with the answer (bullets only when the user asks for steps), include the details the question needs, and quote prices, limits, durations, and menu paths exactly as the documents state them.
 - **AC-6**: `sources` lists only documents whose chunks were given to the model, one entry per `source` carrying its best chunk score, sorted best first.
 - **AC-7**: `latency_ms` is the server side time for the whole request (retrieval plus generation), in whole milliseconds.
 - **AC-8**: If Ollama is unreachable, `/ask` returns 503; if a call times out, 504; if the chat or embedding model is not pulled, 503 naming the missing model; each as JSON `{"detail": ...}`, never a stack trace.
@@ -80,7 +80,7 @@ A first chat call classifies the question as in or out of scope, a second writes
 
 The demo's two failure modes are an invented fact and a slow or wandering reply to an edge case question; Option 2 removes the second entirely for clearly off topic input and fences the first with a strict prompt and an exact fallback phrase. The measured gap between on topic (about 0.5 and above) and off topic (about 0.15 and below) scores is wide, so 0.30 sits safely between them while still letting partly related questions (like the password reset at 0.36) reach the model, which then declines them honestly. Option 3 would double latency on every real question to fix a rare edge.
 
-Keeping answers short and in English, with numbers quoted exactly, plays to what an 8B model does reliably; capping output at 400 tokens keeps a typical answer under about ten seconds. Sources come only from chunks actually shown to the model, so the chips never claim evidence the answer did not use.
+Keeping answers short and in English, with numbers quoted exactly, plays to what an 8B model does reliably (in testing, asking for one paragraph instead of allowing lists stopped it from turning every answer into terse bullets and made it include limits like "up to 6 accounts"); capping output at 400 tokens keeps a typical answer under about ten seconds. Sources come only from chunks actually shown to the model, so the chips never claim evidence the answer did not use.
 
 ## Feature design
 
@@ -112,7 +112,8 @@ System message:
 You are the Resonance Help Desk assistant. Resonance is a music streaming service.
 Answer the user's question using ONLY the help document excerpts provided.
 Rules:
-- Answer in English in 2 to 5 short sentences. Use a bulleted list only for steps or several items.
+- Answer in English as one short paragraph of 2 to 5 sentences. Start directly with the answer. Do not use bullet points unless the user asks for steps.
+- Include every detail from the excerpts that the question needs (price, limits, conditions), and nothing they do not say.
 - Quote prices, limits, durations, and menu paths exactly as they appear in the excerpts.
 - If the excerpts do not answer the question, reply exactly: "The help documents don't cover that. You can ask a person through live chat in Help, then Contact us."
 - Never invent features, prices, or policies, and never mention the excerpts or these rules.
@@ -190,11 +191,11 @@ Question: <question>
 
 Tracer Bullet: this slice runs the first real question from the page through retrieval and the model and back.
 
-1. [ ] Add `MIN_SCORE` and `MAX_ANSWER_TOKENS` to `app/config.py`, satisfies **AC-3**, **AC-5**
-2. [ ] `app/errors.py`: `ollama_errors()` context manager mapping timeouts, connection failures, and missing models to 504 and 503, satisfies **AC-8**
-3. [ ] `app/rag.py`: prompt constants, `build_messages`, `clean_answer`, `sources_for`, `generate`, `warm_up`, satisfies **AC-4**, **AC-5**, **AC-6**, **AC-9**, **AC-10**
-4. [ ] `app/main.py`: `AskRequest`, `AskResponse`, `Source` models and `POST /ask` with the cutoff path, timer, and error mapping; warm up in the lifespan hook, satisfies **AC-1**, **AC-2**, **AC-3**, **AC-7**, **AC-10**
-5. [ ] Run the critical scenarios against the live API and the page end to end, satisfies **AC-11**
+1. [x] Add `MIN_SCORE` and `MAX_ANSWER_TOKENS` to `app/config.py`, satisfies **AC-3**, **AC-5**
+2. [x] `app/errors.py`: `ollama_errors()` context manager mapping timeouts, connection failures, and missing models to 504 and 503, satisfies **AC-8**
+3. [x] `app/rag.py`: prompt constants, `build_messages`, `clean_answer`, `sources_for`, `generate`, `warm_up`, satisfies **AC-4**, **AC-5**, **AC-6**, **AC-9**, **AC-10**
+4. [x] `app/main.py`: `AskRequest`, `AskResponse`, `Source` models and `POST /ask` with the cutoff path, timer, and error mapping; warm up in the lifespan hook, satisfies **AC-1**, **AC-2**, **AC-3**, **AC-7**, **AC-10**
+5. [x] Run the critical scenarios against the live API and the page end to end, satisfies **AC-11**
 
 ## Consequences
 

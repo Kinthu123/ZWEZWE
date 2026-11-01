@@ -66,7 +66,7 @@ The look and layout of the single Q&A page: question box, answer area, source li
    - [x] `design.md` with the warm vinyl tokens and components (AC-1, AC-10)
    - [x] Page structure and inline CSS, responsive and accessible (AC-1, AC-2, AC-10)
    - [x] Ask flow script: input, chips, lock, mini markdown, sources, meta, errors (AC-3 to AC-9)
-- [ ] Verify it: `/check verify web client design` (needs `/ask` from feature 6)
+- [x] Verify it: checked in the browser during feature 6 (offline load, chips, Enter, loading, answer, sources, meta, off topic path, 360 px layout)
 Spec [0003](../specs/0003-web-client-design.md) · code in `web/index.html`, `design.md`
 
 ## Slice 1: Ask and answer
@@ -75,13 +75,13 @@ Spec [0003](../specs/0003-web-client-design.md) · code in `web/index.html`, `de
 The core loop and the walking skeleton: documents are indexed at startup, a user types a question in the web page, the API retrieves the best chunks, the chat model answers using only them, and the page shows the answer with its sources.
 **Done when:** a question about Resonance gets a grounded answer with its source documents shown in the page; a question the documents cannot answer gets an honest "I don't know" rather than an invented fact; the response reports how long it took.
 - [x] Design it (spec): `/architect ask and answer`
-- [ ] Build it: `/develop ask and answer`
-   - [ ] Shared Ollama error mapping (AC-8)
-   - [ ] Prompt, generation, cleaning, sources, warm up (AC-4, AC-5, AC-6, AC-9, AC-10)
-   - [ ] `POST /ask` with validation, cutoff path, and timing (AC-1, AC-2, AC-3, AC-7)
-   - [ ] End to end from the page (AC-11)
+- [x] Build it: `/develop ask and answer`
+   - [x] Shared Ollama error mapping (AC-8)
+   - [x] Prompt, generation, cleaning, sources, warm up (AC-4, AC-5, AC-6, AC-9, AC-10)
+   - [x] `POST /ask` with validation, cutoff path, and timing (AC-1, AC-2, AC-3, AC-7)
+   - [x] End to end from the page (AC-11)
 - [ ] Verify it: `/check verify ask and answer`
-Spec [0004](../specs/0004-ask-and-answer.md)
+Spec [0004](../specs/0004-ask-and-answer.md) · code in `app/rag.py`, `app/errors.py`, `app/main.py`
 
 ## Slice 2: Search without the LLM
 
