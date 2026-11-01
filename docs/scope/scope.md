@@ -20,7 +20,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | 7 | Search without the LLM | Slice 2 | done |
 | 8 | Health check | Slice 3 | done |
 | 9 | Add or update documents | Slice 4 | done |
-| 10 | Question log | Slice 5 | planned |
+| 10 | Question log | Slice 5 | done |
 | 11 | Demo readiness | Slice 6 | planned |
 
 ## Foundations
@@ -114,10 +114,12 @@ Spec [0005](../specs/0005-add-update-documents.md) · code in `app/main.py` (`PO
 
 ## Slice 5: Question log
 
-### 10. Question log
+### 10. Question log · done
 Record every question asked, with time, sources used, and latency, so you can show usage during the presentation.
 **Done when:** each question appends one line to a log file with its timestamp, question, sources, and latency, and a logging failure never breaks an answer.
-- [ ] Build it: `/develop question log`
+- [x] Build it: `/develop question log`
+- [x] Verify it: success, off topic, 503, and unwritable log path checked during `/develop`
+code in `app/question_log.py`, `app/main.py` (JSON Lines in `questions.log`)
 
 ## Slice 6: Demo readiness
 
