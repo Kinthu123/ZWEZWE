@@ -2,14 +2,15 @@
 
 Resonance works on phones, tablets, computers, the web, TVs, game consoles, cars, smart speakers, and watches. You sign in with the same account on every device, and your library and playlists stay in sync.
 
-Supported devices and minimum versions:
-- iPhone and iPad: iOS and iPadOS 16 or later.
-- Android phones and tablets: Android 9 or later.
-- Desktop app: Windows 10 or later, and macOS 12 Monterey or later.
-- Web player at listen.resonance.example: the latest two versions of Chrome, Edge, Firefox, and Safari.
-- Smart TVs: Samsung (2019 or newer), LG webOS 5 or later, Android TV and Google TV, Apple TV (tvOS 16 or later), and Fire TV.
-- Cars: Apple CarPlay and Android Auto.
-- Watches: Apple Watch (watchOS 9 or later) and Wear OS 3 or later, including offline downloads to the watch on Premium.
+Resonance on phones and tablets: the iPhone and iPad app needs iOS or iPadOS 16 or later, and the Android app needs Android 9 or later.
+
+Resonance on computers: the desktop app runs on Windows 10 or later and on macOS 12 Monterey or later. The web player at listen.resonance.example works in the latest two versions of Chrome, Edge, Firefox, and Safari.
+
+Resonance on TVs and game consoles: there are apps for Samsung smart TVs (2019 or newer), LG webOS 5 or later, Android TV and Google TV, Apple TV (tvOS 16 or later), Fire TV, PlayStation 5, and Xbox Series X and S.
+
+Resonance in the car: Resonance works with Apple CarPlay and Android Auto.
+
+Resonance on Apple Watch and Wear OS watches: Apple Watch needs watchOS 9 or later, and Wear OS watches need Wear OS 3 or later. Premium listeners can download music to the watch and listen without their phone nearby.
 
 One stream at a time: each account can play on one device at a time. If you start playing on a second device, the first one pauses and shows "Playing on another device". This applies to every plan; on Family and Duo plans each member has their own account, so members can listen at the same time. Downloaded music played in Offline mode does not count as a stream.
 
