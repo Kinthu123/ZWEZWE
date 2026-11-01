@@ -1,7 +1,7 @@
 # 0002. Knowledge record shape: paragraph chunks rebuilt at startup
 
 **Date**: 2026-11-01
-**Status**: Proposed
+**Status**: In Progress
 
 ## Summary
 
@@ -189,13 +189,13 @@ Relationship: one document file has many chunks (1:N), joined by `metadata.sourc
 
 Tracer Bullet: this foundation is built thin but complete, so the ask and answer slice can plug straight into it.
 
-1. [ ] Add `CHUNK_SIZE`, `CHUNK_OVERLAP`, `CHUNK_MIN`, `EMBED_BATCH`, `TOP_K`, `TOP_K_MAX`, `COLLECTION` to `app/config.py`, satisfies **AC-1**, **AC-6**
-2. [ ] `app/embeddings.py`: one explicit Ollama `Client` from config; `embed_documents` (document prefix, batches of `EMBED_BATCH`, length check) and `embed_query` (query prefix) via `client.embed`, satisfies **AC-3**, **AC-6**
-3. [ ] `parse_document` and `chunk_text` in `app/vector_store.py`: title split, paragraph packing, line, sentence, and word fallback, tail merge, word aligned overlap, satisfies **AC-1**, **AC-2**
-4. [ ] `load_documents`: non recursive, full name match, UTF-8 read, warn and skip invalid files, satisfies **AC-3**, **AC-8**
-5. [ ] Module level `PersistentClient`, cosine `get_or_create_collection` with the metric check, the lock, the status dict, `rebuild_index` (embed all, then upsert and delete vanished ids) and `index_status`, satisfies **AC-3**, **AC-4**, **AC-5**
-6. [ ] `search` (validate `top_k`, embed outside the lock, query inside it with `n_results` capped, clamp scores) and `replace_document` (validate, embed, then upsert and delete that source's vanished ids under the lock), satisfies **AC-6**, **AC-7**, **AC-9**
-7. [ ] Call `rebuild_index` from the FastAPI `lifespan` hook and log the resulting status, satisfies **AC-4**, **AC-5**
+1. [x] Add `CHUNK_SIZE`, `CHUNK_OVERLAP`, `CHUNK_MIN`, `EMBED_BATCH`, `TOP_K`, `TOP_K_MAX`, `COLLECTION` to `app/config.py`, satisfies **AC-1**, **AC-6**
+2. [x] `app/embeddings.py`: one explicit Ollama `Client` from config; `embed_documents` (document prefix, batches of `EMBED_BATCH`, length check) and `embed_query` (query prefix) via `client.embed`, satisfies **AC-3**, **AC-6**
+3. [x] `parse_document` and `chunk_text` in `app/vector_store.py`: title split, paragraph packing, line, sentence, and word fallback, tail merge, word aligned overlap, satisfies **AC-1**, **AC-2**
+4. [x] `load_documents`: non recursive, full name match, UTF-8 read, warn and skip invalid files, satisfies **AC-3**, **AC-8**
+5. [x] Module level `PersistentClient`, cosine `get_or_create_collection` with the metric check, the lock, the status dict, `rebuild_index` (embed all, then upsert and delete vanished ids) and `index_status`, satisfies **AC-3**, **AC-4**, **AC-5**
+6. [x] `search` (validate `top_k`, embed outside the lock, query inside it with `n_results` capped, clamp scores) and `replace_document` (validate, embed, then upsert and delete that source's vanished ids under the lock), satisfies **AC-6**, **AC-7**, **AC-9**
+7. [x] Call `rebuild_index` from the FastAPI `lifespan` hook and log the resulting status, satisfies **AC-4**, **AC-5**
 
 ## Consequences
 

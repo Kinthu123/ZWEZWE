@@ -1,12 +1,13 @@
 """FastAPI app: serves the API and the web page from one process."""
 
+import asyncio
 import logging
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 
-from app import config
+from app import config, vector_store
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("resonance")
@@ -15,6 +16,8 @@ logger = logging.getLogger("resonance")
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Starting Resonance Help Desk (chat model %s, embed model %s)", config.CHAT_MODEL, config.EMBED_MODEL)
+    status = await asyncio.to_thread(vector_store.rebuild_index)
+    logger.info("Index: %s", status)
     yield
 
 
