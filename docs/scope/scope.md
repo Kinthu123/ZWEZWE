@@ -15,7 +15,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | 2 | Coding standards & tooling | Foundation | done |
 | 3 | Knowledge record shape | Foundation | done |
 | 4 | Resonance knowledge documents | Foundation | done |
-| 5 | Web client design | Foundation | planned |
+| 5 | Web client design | Foundation | in-progress |
 | 6 | Ask and answer | Slice 1 | planned |
 | 7 | Search without the LLM | Slice 2 | planned |
 | 8 | Health check | Slice 3 | planned |
@@ -58,10 +58,16 @@ At least six plain text help documents for Resonance, each on a clearly differen
 - [x] Write them: `/develop resonance knowledge documents`
 code in `knowledge/` (6 documents)
 
-### 5. Web client design · needs a decision
+### 5. Web client design · in-progress
 The look and layout of the single Q&A page: question box, answer area, source list, loading and error states. It is what the instructor and the demo video see first.
 **Done when:** `design.md` covers layout, type, color, and the loading, empty, and error states, and the page is usable on a laptop and a phone.
-- [ ] Design it (spec): `/architect web client design`
+- [x] Design it (spec): `/architect web client design`
+- [x] Build it: `/develop web client design`
+   - [x] `design.md` with the warm vinyl tokens and components (AC-1, AC-10)
+   - [x] Page structure and inline CSS, responsive and accessible (AC-1, AC-2, AC-10)
+   - [x] Ask flow script: input, chips, lock, mini markdown, sources, meta, errors (AC-3 to AC-9)
+- [ ] Verify it: `/check verify web client design` (needs `/ask` from feature 6)
+Spec [0003](../specs/0003-web-client-design.md) · code in `web/index.html`, `design.md`
 
 ## Slice 1: Ask and answer
 
