@@ -4,9 +4,329 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Resonance Help Desk</title>
+  <style>
+    :root {
+      --bg: #FBF7F2;
+      --surface: #FFFFFF;
+      --ink: #2A2233;
+      --muted: #6B6170;
+      --border: #E9E1D8;
+      --accent: #5B2A86;
+      --accent-dark: #47206A;
+      --accent-soft: #F1EAF7;
+      --highlight: #FF6B5A;
+      --danger: #B42318;
+      --radius: 16px;
+      --shadow: 0 1px 2px rgba(42, 34, 51, 0.06), 0 8px 24px rgba(42, 34, 51, 0.06);
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    main { max-width: 760px; margin: 0 auto; padding: 32px 16px 24px; }
+    a { color: var(--accent); }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+    header svg { flex: none; }
+    h1 { margin: 0; font-size: 28px; line-height: 1.2; font-weight: 600; }
+    .subtitle { margin: 2px 0 0; color: var(--muted); font-size: 16px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    label { display: block; font-weight: 600; margin-bottom: 8px; }
+    textarea {
+      width: 100%;
+      min-height: 96px;
+      resize: vertical;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font: inherit;
+      color: inherit;
+      background: var(--bg);
+    }
+    textarea:focus-visible { outline-offset: 0; }
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 8px; }
+    .counter { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+
+    button { font: inherit; cursor: pointer; }
+    button:disabled { opacity: 0.45; cursor: not-allowed; }
+    .primary {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 24px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+    }
+    .primary:hover:not(:disabled) { background: var(--accent-dark); }
+
+    .try { margin: 16px 0 8px; color: var(--muted); font-size: 14px; font-weight: 600; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    .chip {
+      display: inline-block;
+      border: 0;
+      border-radius: 999px;
+      padding: 6px 14px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 15px;
+      line-height: 1.4;
+      text-align: left;
+    }
+    button.chip:hover:not(:disabled) { background: #E6DAF1; }
+
+    .answer[hidden] { display: none; }
+    .answer-body p { margin: 0 0 12px; }
+    .answer-body ul { margin: 0 0 12px; padding-left: 22px; }
+    .answer-body li { margin-bottom: 4px; }
+    .answer-body > :last-child { margin-bottom: 0; }
+    .sources { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .sources-label { margin: 0 0 8px; color: var(--muted); font-size: 14px; font-weight: 600; }
+    .none { color: var(--muted); font-size: 15px; }
+    .meta { margin: 12px 0 0; color: var(--muted); font-size: 14px; }
+
+    .loading { display: flex; align-items: center; gap: 12px; color: var(--muted); margin: 0; }
+    .dots { display: inline-flex; gap: 5px; }
+    .dots span {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.2s infinite ease-in-out;
+    }
+    .dots span:nth-child(2) { animation-delay: 0.2s; }
+    .dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes pulse { 0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+    @media (prefers-reduced-motion: reduce) { .dots span { animation: none; opacity: 0.6; } }
+
+    .error {
+      margin: 0;
+      padding: 8px 14px;
+      color: var(--danger);
+      border-left: 4px solid var(--danger);
+      background: #FDF1F0;
+      border-radius: 4px;
+    }
+
+    footer { color: var(--muted); font-size: 14px; text-align: center; padding: 8px 0 24px; }
+
+    @media (max-width: 520px) {
+      main { padding-top: 20px; }
+      .card { padding: 16px; }
+      h1 { font-size: 24px; }
+      .primary { padding: 10px 20px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Resonance Help Desk</h1>
-  <p>The question page is coming soon. The API docs are at <a href="/docs">/docs</a>.</p>
+  <main>
+    <header>
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" fill="#5B2A86"/>
+        <circle cx="20" cy="20" r="14" fill="none" stroke="#7A4BA6" stroke-width="1"/>
+        <circle cx="20" cy="20" r="10" fill="none" stroke="#7A4BA6" stroke-width="1"/>
+        <circle cx="20" cy="20" r="6.5" fill="#FF6B5A"/>
+        <circle cx="20" cy="20" r="1.8" fill="#FBF7F2"/>
+      </svg>
+      <div>
+        <h1>Resonance Help Desk</h1>
+        <p class="subtitle">Answers from Resonance's help documents</p>
+      </div>
+    </header>
+
+    <section class="card" aria-label="Ask a question">
+      <form id="ask-form">
+        <label for="question">Ask a question about Resonance</label>
+        <textarea id="question" name="question" rows="3" maxlength="500"
+          placeholder="For example: can I download music on my phone?"></textarea>
+        <div class="row">
+          <span class="counter" id="counter" aria-live="off">0 / 500</span>
+          <button type="submit" class="primary" id="ask" disabled>Ask</button>
+        </div>
+      </form>
+      <p class="try" id="try-label">Try one</p>
+      <ul class="chips" aria-labelledby="try-label">
+        <li><button type="button" class="chip">How much is the Family plan?</button></li>
+        <li><button type="button" class="chip">How many devices can I download music on?</button></li>
+        <li><button type="button" class="chip">How long can I stay on the Student plan?</button></li>
+        <li><button type="button" class="chip">Does Resonance work on Apple Watch?</button></li>
+        <li><button type="button" class="chip">When do artists get paid?</button></li>
+        <li><button type="button" class="chip">Can I get a refund on the yearly plan?</button></li>
+      </ul>
+    </section>
+
+    <section class="card answer" id="answer" aria-live="polite" aria-label="Answer" hidden></section>
+
+    <footer>
+      Resonance is a fictional service made for a class project · <a href="/docs">API docs</a>
+    </footer>
+  </main>
+
+  <script>
+    const MAX = 500;
+    const form = document.getElementById("ask-form");
+    const box = document.getElementById("question");
+    const counter = document.getElementById("counter");
+    const askButton = document.getElementById("ask");
+    const chips = Array.from(document.querySelectorAll("button.chip"));
+    const answer = document.getElementById("answer");
+    let busy = false;
+
+    const ERRORS = {
+      422: "Please enter a question between 1 and 500 characters.",
+      503: "The model server isn't running. Start Ollama and try again.",
+      504: "That took too long. Try again, or ask a shorter question.",
+    };
+
+    function el(tag, className, text) {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (text !== undefined) node.textContent = text;
+      return node;
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    }
+
+    // Safe mini markdown: escape first, then only paragraphs, **bold**, and - or * bullet lists.
+    function renderMarkdown(text) {
+      const bold = (line) => line.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      const blocks = escapeHtml(text.trim()).split(/\n\s*\n/);
+      return blocks.map((block) => {
+        const lines = block.split("\n").map((line) => line.trim()).filter(Boolean);
+        const isList = lines.length > 0 && lines.every((line) => /^[-*] /.test(line));
+        if (isList) {
+          return "<ul>" + lines.map((line) => "<li>" + bold(line.slice(2)) + "</li>").join("") + "</ul>";
+        }
+        const parts = [];
+        let items = [];
+        const flush = () => {
+          if (items.length) parts.push("<ul>" + items.map((i) => "<li>" + bold(i) + "</li>").join("") + "</ul>");
+          items = [];
+        };
+        for (const line of lines) {
+          if (/^[-*] /.test(line)) { items.push(line.slice(2)); continue; }
+          flush();
+          parts.push("<p>" + bold(line) + "</p>");
+        }
+        flush();
+        return parts.join("");
+      }).join("");
+    }
+
+    function updateControls() {
+      const length = box.value.length;
+      counter.textContent = length + " / " + MAX;
+      askButton.disabled = busy || box.value.trim().length === 0;
+      chips.forEach((chip) => { chip.disabled = busy; });
+    }
+
+    function showLoading() {
+      answer.hidden = false;
+      answer.replaceChildren();
+      const line = el("p", "loading");
+      const dots = el("span", "dots");
+      dots.setAttribute("aria-hidden", "true");
+      dots.append(el("span"), el("span"), el("span"));
+      line.append(dots, el("span", "", "Searching the help docs and writing an answer…"));
+      answer.append(line);
+    }
+
+    function showError(message) {
+      answer.hidden = false;
+      answer.replaceChildren(el("p", "error", message));
+    }
+
+    function showAnswer(data) {
+      answer.hidden = false;
+      answer.replaceChildren();
+
+      const body = el("div", "answer-body");
+      body.innerHTML = renderMarkdown(String(data.answer || ""));
+      answer.append(body);
+
+      const sources = el("div", "sources");
+      sources.append(el("p", "sources-label", "Sources"));
+      const seen = new Set();
+      const unique = (Array.isArray(data.sources) ? data.sources : []).filter((s) => {
+        if (!s || seen.has(s.source)) return false;
+        seen.add(s.source);
+        return true;
+      });
+      if (unique.length === 0) {
+        sources.append(el("p", "none", "No matching help documents"));
+      } else {
+        const list = el("ul", "chips");
+        for (const s of unique) {
+          const item = el("li");
+          item.append(el("span", "chip", s.title + " · " + Math.round(Number(s.score) * 100) + "%"));
+          list.append(item);
+        }
+        sources.append(list);
+      }
+      answer.append(sources);
+
+      const seconds = (Number(data.latency_ms) / 1000).toFixed(1);
+      answer.append(el("p", "meta", data.model + " · " + seconds + " s"));
+    }
+
+    async function ask(question) {
+      if (busy) return;
+      question = question.trim();
+      if (!question) return;
+      busy = true;
+      updateControls();
+      showLoading();
+      try {
+        const response = await fetch("/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question }),
+        });
+        if (!response.ok) {
+          showError(ERRORS[response.status] || "Something went wrong (error " + response.status + ").");
+        } else {
+          showAnswer(await response.json());
+        }
+      } catch (err) {
+        showError("Can't reach the Resonance server. Check that it's running.");
+      } finally {
+        busy = false;
+        updateControls();
+      }
+    }
+
+    box.addEventListener("input", updateControls);
+    box.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !event.shiftKey && !event.isComposing) {
+        event.preventDefault();
+        ask(box.value);
+      }
+    });
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      ask(box.value);
+    });
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        box.value = chip.textContent;
+        ask(box.value);
+      });
+    });
+    updateControls();
+  </script>
 </body>
 </html>
