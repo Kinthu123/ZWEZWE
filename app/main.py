@@ -2,11 +2,13 @@
 
 import asyncio
 import logging
+import os
+import secrets
 import time
 from contextlib import asynccontextmanager
 from typing import Annotated
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field, StringConstraints
 
@@ -71,6 +73,19 @@ class SearchResponse(BaseModel):
     latency_ms: int
 
 
+class DocumentRequest(BaseModel):
+    name: Annotated[str, StringConstraints(pattern=r"^[A-Za-z0-9_-]{1,64}$")]
+    content: Annotated[str, StringConstraints(min_length=1, max_length=config.MAX_DOC_CHARS)]
+
+
+class DocumentResponse(BaseModel):
+    name: str
+    title: str
+    chunks: int
+    created: bool
+    latency_ms: int
+
+
 class Health(BaseModel):
     status: str
     ollama: bool
@@ -111,6 +126,32 @@ def search(request: SearchRequest) -> SearchResponse:
         hits = vector_store.search(request.query, request.top_k)
     latency_ms = round((time.perf_counter() - start) * 1000)
     return SearchResponse(query=request.query, results=hits, latency_ms=latency_ms)
+
+
+@app.post("/documents", response_model=DocumentResponse)
+def upsert_document(request: DocumentRequest) -> DocumentResponse:
+    """Add or replace a help document; saved to knowledge/ and searchable immediately. Needs RAG_ALLOW_UPLOADS=1."""
+    if not config.ALLOW_UPLOADS:
+        raise HTTPException(
+            status_code=403,
+            detail="Document uploads are turned off. Start the server with RAG_ALLOW_UPLOADS=1 to enable them.",
+        )
+    start = time.perf_counter()
+    target = config.KNOWLEDGE_DIR / f"{request.name}.txt"
+    created = not target.exists()
+    temp = config.KNOWLEDGE_DIR / f".{request.name}.{secrets.token_hex(4)}.tmp"
+    temp.write_text(request.content, encoding="utf-8")
+    try:
+        with ollama_errors():
+            chunks = vector_store.replace_document(request.name, request.content)
+        os.replace(temp, target)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    finally:
+        temp.unlink(missing_ok=True)
+    title = vector_store.parse_document(request.content)[0] or request.name
+    latency_ms = round((time.perf_counter() - start) * 1000)
+    return DocumentResponse(name=request.name, title=title, chunks=chunks, created=created, latency_ms=latency_ms)
 
 
 def _with_tag(name: str) -> str:
