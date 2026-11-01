@@ -13,7 +13,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 |---|---------|-------|--------|
 | 1 | Stack & architecture | Foundation | done |
 | 2 | Coding standards & tooling | Foundation | done |
-| 3 | Knowledge record shape | Foundation | in-progress |
+| 3 | Knowledge record shape | Foundation | done |
 | 4 | Resonance knowledge documents | Foundation | done |
 | 5 | Web client design | Foundation | planned |
 | 6 | Ask and answer | Slice 1 | planned |
@@ -40,17 +40,17 @@ Capture conventions and tooling from the real scaffolded project, then install t
 - [x] Install the tooling: `/develop tooling`
 code in `AGENTS.md`, `pyproject.toml`, `requirements-dev.txt`
 
-### 3. Knowledge record shape · in-progress
+### 3. Knowledge record shape · done
 How a document becomes searchable records: chunk size and overlap, the id scheme, the metadata each chunk keeps, the similarity measure, and how many chunks are retrieved by default.
 **Done when:** every chunk can be traced back to its source document and position, and indexing again updates records rather than duplicating them.
 - [x] Design it (spec): `/architect knowledge record shape`
-- [ ] Build it: `/develop knowledge record shape`
-   - [ ] Config and embeddings with prefixes (AC-3, AC-6)
-   - [ ] Parsing, chunking, and file rules (AC-1, AC-2, AC-8)
-   - [ ] Index lifecycle: rebuild, status, startup hook (AC-3, AC-4, AC-5)
-   - [ ] Search and replace under the lock (AC-6, AC-7, AC-9)
-- [ ] Verify it: `/check verify knowledge record shape`
-Spec [0002](../specs/0002-knowledge-record-shape.md)
+- [x] Build it: `/develop knowledge record shape`
+   - [x] Config and embeddings with prefixes (AC-3, AC-6)
+   - [x] Parsing, chunking, and file rules (AC-1, AC-2, AC-8)
+   - [x] Index lifecycle: rebuild, status, startup hook (AC-3, AC-4, AC-5)
+   - [x] Search and replace under the lock (AC-6, AC-7, AC-9)
+- [x] Verify it: all 9 ACs exercised by a scenario run during `/develop` (22 checks passed)
+Spec [0002](../specs/0002-knowledge-record-shape.md) · code in `app/embeddings.py`, `app/vector_store.py`
 
 ### 4. Resonance knowledge documents · done
 At least six plain text help documents for Resonance, each on a clearly different topic (for example plans and pricing, offline downloads, family and student accounts, devices and playback, artist uploads and royalties, refunds and cancellation). Fictional, consistent with each other, and full of specific facts a demo question can hit.

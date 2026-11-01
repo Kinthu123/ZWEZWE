@@ -20,6 +20,15 @@ TEMPERATURE = float(os.environ.get("RAG_TEMPERATURE", "0.2"))
 NUM_CTX = int(os.environ.get("RAG_NUM_CTX", "8192"))
 KEEP_ALIVE = os.environ.get("RAG_KEEP_ALIVE", "30m")
 
+# Chunking and retrieval (spec 0002)
+CHUNK_SIZE = int(os.environ.get("RAG_CHUNK_SIZE", "500"))
+CHUNK_OVERLAP = int(os.environ.get("RAG_CHUNK_OVERLAP", "80"))
+CHUNK_MIN = int(os.environ.get("RAG_CHUNK_MIN", "100"))
+EMBED_BATCH = int(os.environ.get("RAG_EMBED_BATCH", "32"))
+TOP_K = int(os.environ.get("RAG_TOP_K", "4"))
+TOP_K_MAX = int(os.environ.get("RAG_TOP_K_MAX", "10"))
+COLLECTION = os.environ.get("RAG_COLLECTION", "resonance_help")
+
 # Paths
 KNOWLEDGE_DIR = _path("RAG_KNOWLEDGE_DIR", "knowledge")
 CHROMA_DIR = _path("RAG_CHROMA_DIR", "chroma_db")
