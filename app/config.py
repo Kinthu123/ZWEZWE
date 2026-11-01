@@ -33,6 +33,10 @@ COLLECTION = os.environ.get("RAG_COLLECTION", "resonance_help")
 MIN_SCORE = float(os.environ.get("RAG_MIN_SCORE", "0.30"))
 MAX_ANSWER_TOKENS = int(os.environ.get("RAG_MAX_ANSWER_TOKENS", "400"))
 
+# Document uploads (spec 0005)
+ALLOW_UPLOADS = os.environ.get("RAG_ALLOW_UPLOADS", "0").strip().lower() in {"1", "true", "yes"}
+MAX_DOC_CHARS = int(os.environ.get("RAG_MAX_DOC_CHARS", "20000"))
+
 # Paths
 KNOWLEDGE_DIR = _path("RAG_KNOWLEDGE_DIR", "knowledge")
 CHROMA_DIR = _path("RAG_CHROMA_DIR", "chroma_db")
