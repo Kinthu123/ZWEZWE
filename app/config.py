@@ -29,6 +29,10 @@ TOP_K = int(os.environ.get("RAG_TOP_K", "4"))
 TOP_K_MAX = int(os.environ.get("RAG_TOP_K_MAX", "10"))
 COLLECTION = os.environ.get("RAG_COLLECTION", "resonance_help")
 
+# Answering (spec 0004)
+MIN_SCORE = float(os.environ.get("RAG_MIN_SCORE", "0.30"))
+MAX_ANSWER_TOKENS = int(os.environ.get("RAG_MAX_ANSWER_TOKENS", "400"))
+
 # Paths
 KNOWLEDGE_DIR = _path("RAG_KNOWLEDGE_DIR", "knowledge")
 CHROMA_DIR = _path("RAG_CHROMA_DIR", "chroma_db")

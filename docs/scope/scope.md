@@ -15,8 +15,8 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | 2 | Coding standards & tooling | Foundation | done |
 | 3 | Knowledge record shape | Foundation | done |
 | 4 | Resonance knowledge documents | Foundation | done |
-| 5 | Web client design | Foundation | in-progress |
-| 6 | Ask and answer | Slice 1 | planned |
+| 5 | Web client design | Foundation | done |
+| 6 | Ask and answer | Slice 1 | done |
 | 7 | Search without the LLM | Slice 2 | planned |
 | 8 | Health check | Slice 3 | planned |
 | 9 | Add or update documents | Slice 4 | planned |
@@ -58,7 +58,7 @@ At least six plain text help documents for Resonance, each on a clearly differen
 - [x] Write them: `/develop resonance knowledge documents`
 code in `knowledge/` (6 documents)
 
-### 5. Web client design · in-progress
+### 5. Web client design · done
 The look and layout of the single Q&A page: question box, answer area, source list, loading and error states. It is what the instructor and the demo video see first.
 **Done when:** `design.md` covers layout, type, color, and the loading, empty, and error states, and the page is usable on a laptop and a phone.
 - [x] Design it (spec): `/architect web client design`
@@ -66,15 +66,22 @@ The look and layout of the single Q&A page: question box, answer area, source li
    - [x] `design.md` with the warm vinyl tokens and components (AC-1, AC-10)
    - [x] Page structure and inline CSS, responsive and accessible (AC-1, AC-2, AC-10)
    - [x] Ask flow script: input, chips, lock, mini markdown, sources, meta, errors (AC-3 to AC-9)
-- [ ] Verify it: `/check verify web client design` (needs `/ask` from feature 6)
+- [x] Verify it: checked in the browser during feature 6 (offline load, chips, Enter, loading, answer, sources, meta, off topic path, 360 px layout)
 Spec [0003](../specs/0003-web-client-design.md) · code in `web/index.html`, `design.md`
 
 ## Slice 1: Ask and answer
 
-### 6. Ask and answer · needs a decision
+### 6. Ask and answer · done
 The core loop and the walking skeleton: documents are indexed at startup, a user types a question in the web page, the API retrieves the best chunks, the chat model answers using only them, and the page shows the answer with its sources.
 **Done when:** a question about Resonance gets a grounded answer with its source documents shown in the page; a question the documents cannot answer gets an honest "I don't know" rather than an invented fact; the response reports how long it took.
-- [ ] Design it (spec): `/architect ask and answer`
+- [x] Design it (spec): `/architect ask and answer`
+- [x] Build it: `/develop ask and answer`
+   - [x] Shared Ollama error mapping (AC-8)
+   - [x] Prompt, generation, cleaning, sources, warm up (AC-4, AC-5, AC-6, AC-9, AC-10)
+   - [x] `POST /ask` with validation, cutoff path, and timing (AC-1, AC-2, AC-3, AC-7)
+   - [x] End to end from the page (AC-11)
+- [x] Verify it: all 11 ACs exercised against the live model and in the browser during `/develop`
+Spec [0004](../specs/0004-ask-and-answer.md) · code in `app/rag.py`, `app/errors.py`, `app/main.py`
 
 ## Slice 2: Search without the LLM
 
