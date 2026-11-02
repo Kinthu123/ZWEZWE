@@ -1,0 +1,17 @@
+# Devices and Reading Apps
+
+The Folio app runs on iPhone and iPad with iOS 16 or later, and on Android phones and tablets with Android 10 or later. On computers you can read in any modern web browser at read.folio.example, or use the desktop app for macOS 13 or later and Windows 10 or later.
+
+Kindle and e-readers: Folio does not work on Amazon Kindle devices. Folio works on Kobo e-readers released in 2021 or later and on PocketBook e-readers that support the Folio app from their app store. On a supported e-reader, sign in under Settings, then Accounts, then Folio, and your library syncs automatically. E-readers can show ebooks only; audiobooks need a phone, tablet, computer, or smart speaker.
+
+Smart speakers and cars: you can listen to audiobooks on Amazon Alexa and Google Nest speakers by linking your Folio account in the speaker's app, then saying "play my audiobook on Folio". In the car, Folio works with Apple CarPlay and Android Auto and shows your current audiobook and recent chapters.
+
+Apple Watch: Folio works on Apple Watch with watchOS 10 or later. You can control audiobook playback from the watch, and readers on a paid plan can download audiobooks to the watch to listen without their phone.
+
+Sync across devices: your reading position, highlights, notes, and bookmarks sync to every device signed in to your account. If two devices disagree about where you are, Folio asks which position to keep. When you own both the ebook and the audiobook of the same title, the Switch and Listen feature lets you move between reading the ebook and listening to the audiobook at the same spot.
+
+Reading settings: in an open book, tap the Aa button to change font, text size, line spacing, margins, and page colour (white, sepia, or dark). Dyslexia friendly fonts are included. Audiobooks can play at speeds from 0.5x to 3x, and a sleep timer can stop playback after 15, 30, or 60 minutes, or at the end of the chapter.
+
+Signed in devices: you can be signed in on up to 10 devices at once. Only one device can play an audiobook at a time; starting playback on a second device pauses the first. To sign out a device you no longer have, go to Account, then Devices, then Sign out next to the device.
+
+If the app does not open or books will not load, update the app, restart the device, and check that your device meets the minimum system versions listed above.

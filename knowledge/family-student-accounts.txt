@@ -1,23 +1,17 @@
 # Family and Student Accounts
 
-This guide covers Premium Family, Premium Duo, and Premium Student: who can join, how to invite people, and how verification works. Prices are listed in the Plans and Pricing guide.
+The Folio Family plan covers up to 6 accounts, including the plan manager, who all live at the same home address. Each member uses their own login and has a private library, so members cannot see what the others are reading unless they choose to share a book.
 
-Premium Family is for up to 6 people, including the plan manager, who live at the same home address. The plan manager is the person who pays. Every member gets their own Premium account with separate playlists, recommendations, and listening history; members never see each other's listening.
+Inviting members: the plan manager goes to Account, then Family, then Invite member, and sends an invite link by email or text. The link expires after 7 days. The person accepting confirms the home address when they join. A person can belong to only one Family plan at a time, and can switch to a different Family plan only once every 12 months.
 
-Inviting family members: the plan manager opens Account, then Premium Family, then Invite member, and sends the invite link by text, email, or any messaging app. Each link works once and expires after 7 days. The person invited signs in (or creates a free account), confirms the home address, and is moved onto the plan immediately. If they had their own paid Premium before, that subscription is cancelled automatically and they are refunded any unused days.
+Sharing books: books that a family member buys can be shared with the whole plan. Open the book, tap the three dots, then choose Share with family. Shared books appear in every member's library under Family shelf. The plan manager can stop sharing any book at any time. Unlimited books are not shared; each member borrows their own copy, and each member has their own limit of 20 borrowed books.
 
-Address rules: all members of a Family or Duo plan must live at the plan manager's home address. Members confirm the address when they join, and Resonance may ask members to confirm it again, at most once every 12 months. A member who cannot confirm the address within 14 days of being asked is moved back to Resonance Free.
+Audiobook credits on Family: the plan includes 2 audiobook credits per month. Credits go into a shared family pool that the plan manager controls. The manager can let every member spend credits freely, or require approval before a member uses one.
 
-Removing and switching members: the plan manager can remove a member at any time from Account, then Premium Family, then Manage members. A member removed from a plan becomes a Free listener but keeps all their playlists. Each person can join a new Family or Duo plan at most once every 12 months.
+Kids profiles: the plan manager can turn any member account into a kids profile for readers under 13. Kids profiles show only books rated for children, hide the store, and cannot buy books or spend credits. To set one up, go to Account, then Family, choose the member, then turn on Kids profile. You can also set a daily reading time goal and see reading progress reports.
 
-Resonance Kids: Family plans include Resonance Kids, a separate app for children under 13. The plan manager creates a child's account from Manage members, then Add a child account. Kids accounts play only content picked by Resonance's editors for children, explicit content is always blocked, and the child cannot change this setting. Kids accounts count toward the 6 member limit.
+Removing members: the plan manager can remove a member in Account, then Family. The removed member moves to Folio Free and keeps the books they bought, but loses access to shared books and borrowed Unlimited books.
 
-Explicit content filter: the plan manager can turn the explicit content filter on or off for any member aged under 18. When it is on, songs marked Explicit are greyed out and cannot be played.
+Folio Student: the Student plan is for students aged 18 or older at an accredited college or university. Folio checks enrollment through a verification partner when you sign up. You must reverify every 12 months, and you can stay on Folio Student for at most 48 months in total. If verification fails or the 48 months run out, your plan changes to Folio Unlimited at the regular price at your next billing date, and Folio emails you 7 days before.
 
-Premium Duo works the same way as Family but for exactly 2 people at the same address, both with their own Premium account. Duo does not include Resonance Kids.
-
-Premium Student is for students aged 18 or over who are enrolled at an accredited college or university. To join, go to the Student page and verify your enrollment through CampusCheck, Resonance's verification partner, using your school email or an enrollment document. Verification usually takes a few minutes and at most 3 business days.
-
-Student renewals: student status must be verified again every 12 months, and you can stay on Premium Student for a maximum of 48 months (4 years) in total. If you do not reverify, or once you reach 48 months, your account moves to Premium Individual at the regular $10.99 per month price, and you receive an email 14 days before that change.
-
-Student and Family cannot be combined: a Student account cannot be a member of a Family or Duo plan at the same time. Joining a Family plan ends your Student subscription.
+Students cannot be members of a Family plan and on Folio Student at the same time.

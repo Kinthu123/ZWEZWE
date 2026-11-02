@@ -1,21 +1,17 @@
 # Plans and Pricing
 
-Resonance offers one free plan and four Premium plans. All prices are in US dollars, billed monthly unless stated otherwise, and local sales tax may be added at checkout. Prices on this page took effect on 1 March 2026.
+Folio is a reading service for ebooks and audiobooks. You can read and listen in the Folio app on your phone, tablet, computer, or e-reader. Folio has four plans: Folio Free, Folio Unlimited, Folio Family, and Folio Student. Prices on this page are in US dollars and include sales tax where it applies.
 
-Resonance Free costs nothing and is supported by ads. On phones and tablets, Free listeners can play albums and playlists only in shuffle mode and can skip up to 6 tracks per hour. Free streams at up to 160 kbps, cannot download music for offline listening, and plays an audio or video ad roughly every 30 minutes of listening. On desktop and the web player, Free listeners can pick any track on demand.
+Folio Free costs nothing. Free readers can read free classics and public domain books, read the first chapter of any book as a sample, and buy individual ebooks and audiobooks at their listed price. Free readers cannot borrow from the Unlimited catalog and cannot download audiobooks they have not bought.
 
-Premium Individual costs $10.99 per month for one account. It removes all ads, allows unlimited skips, lets you play any track in any order on every device, unlocks offline downloads, and includes lossless audio (Resonance Hi-Fi, up to 24-bit/96 kHz FLAC) at no extra cost. Premium Individual can also be paid yearly at $109.90 per year, which works out to two months free compared with paying monthly.
+Folio Unlimited costs $11.99 per month for one person. It includes unlimited reading from the Unlimited catalog of more than 1.5 million ebooks, plus one audiobook credit every month. You can have up to 20 Unlimited books borrowed at the same time. Unlimited is also available as a yearly plan for $119.99 per year, which is about two months free compared with paying monthly.
 
-Premium Duo costs $14.99 per month for two Premium accounts that live at the same address. Each person keeps their own library, playlists, and recommendations, and Duo members also get a shared playlist called Duo Mix that updates every Wednesday.
+Folio Family costs $17.99 per month for up to 6 accounts that live at the same address. Every member gets their own library, reading progress, and recommendations, and the plan includes 2 audiobook credits per month that the plan manager can share with any member. The plan manager pays for the plan and can add or remove members at any time.
 
-Premium Family costs $17.99 per month for up to 6 Premium accounts that live at the same address, including the plan manager. Family includes Resonance Kids, a separate app for children under 13 with explicit content blocked. Details on inviting members and the address rules are in the Family and Student Accounts guide.
+Folio Student costs $5.99 per month for students at an accredited college or university. It includes everything in Folio Unlimited. Eligibility rules are described in the Family and Student Accounts help page.
 
-Premium Student costs $5.99 per month for one account and has the same features as Premium Individual. It is available to students aged 18 or over enrolled at an accredited college or university, and requires verification. Eligibility rules are in the Family and Student Accounts guide.
+Free trial: new readers can try Folio Unlimited free for 30 days. Only one free trial is allowed per person and per payment method. If you do not cancel before the trial ends, the monthly Unlimited price is charged automatically on day 31.
 
-Free trial: people who have never had Premium, Duo, Family, or Student before can try Premium Individual free for 1 month. Duo and Family trials are also 1 month, and Student trials are 1 month. A payment method is required to start a trial, you are charged automatically when the trial ends unless you cancel at least 24 hours before, and each person can only have one Premium trial ever, across all plans.
+Changing plans: to upgrade, go to Account, then Plan, then Change plan. Upgrades start immediately and you pay only the difference for the rest of the current billing period. Downgrades start at the next billing date, so you keep your current plan until then. If you downgrade from Unlimited to Free, borrowed Unlimited books are returned at the end of the billing period, but books you bought stay in your library forever.
 
-Changing plans: you can switch between Premium plans at any time from Account, then Subscription, then Change plan. Upgrading (for example from Individual to Family) takes effect immediately and you are charged a prorated amount for the rest of the current billing period. Downgrading takes effect at the start of your next billing period.
-
-Gift cards: Resonance gift cards come in values of $10.99, $32.97 (3 months), $65.94 (6 months), and $109.90 (12 months). They can only be redeemed for Premium Individual, cannot be used for Duo, Family, or Student, and never expire.
-
-Payment methods accepted: Visa, Mastercard, American Express, Discover, PayPal, Resonance gift cards, and Apple or Google in app purchase. Subscriptions bought through the Apple App Store or Google Play are billed and managed by those stores and cost $2 more per month.
+Payment: Folio accepts credit and debit cards, PayPal, Apple Pay, Google Pay, and Folio gift cards. Gift cards come in $25, $50, and $100 values and never expire. To redeem one, go to Account, then Redeem gift card. The gift card balance is used before your card is charged.

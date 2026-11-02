@@ -3,21 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Resonance Help Desk</title>
+  <title>Folio Help Desk</title>
   <style>
     :root {
-      --bg: #FBF7F2;
-      --surface: #FFFFFF;
-      --ink: #2A2233;
-      --muted: #6B6170;
-      --border: #E9E1D8;
-      --accent: #5B2A86;
-      --accent-dark: #47206A;
-      --accent-soft: #F1EAF7;
-      --highlight: #FF6B5A;
+      --bg: #F4F1E8;
+      --surface: #FFFDF7;
+      --ink: #22301F;
+      --muted: #5C6857;
+      --border: #E0DBCB;
+      --accent: #2F6B3F;
+      --accent-dark: #245432;
+      --accent-soft: #E5EEDD;
+      --accent-soft-hover: #D6E5CB;
+      --highlight: #C9A25B;
       --danger: #B42318;
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
       --radius: 16px;
-      --shadow: 0 1px 2px rgba(42, 34, 51, 0.06), 0 8px 24px rgba(42, 34, 51, 0.06);
+      --shadow: 0 1px 2px rgba(34, 48, 31, 0.05), 0 8px 24px rgba(34, 48, 31, 0.06);
     }
     * { box-sizing: border-box; }
     html { -webkit-text-size-adjust: 100%; }
@@ -33,7 +35,7 @@
 
     header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
     header svg { flex: none; }
-    h1 { margin: 0; font-size: 28px; line-height: 1.2; font-weight: 600; }
+    h1 { margin: 0; font-family: var(--serif); font-size: 30px; line-height: 1.2; font-weight: 600; letter-spacing: -0.01em; }
     .subtitle { margin: 2px 0 0; color: var(--muted); font-size: 16px; }
 
     .card {
@@ -86,7 +88,7 @@
       line-height: 1.4;
       text-align: left;
     }
-    button.chip:hover:not(:disabled) { background: #E6DAF1; }
+    button.chip:hover:not(:disabled) { background: var(--accent-soft-hover); }
 
     .answer[hidden] { display: none; }
     .answer-body p { margin: 0 0 12px; }
@@ -133,23 +135,22 @@
   <main>
     <header>
       <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
-        <circle cx="20" cy="20" r="19" fill="#5B2A86"/>
-        <circle cx="20" cy="20" r="14" fill="none" stroke="#7A4BA6" stroke-width="1"/>
-        <circle cx="20" cy="20" r="10" fill="none" stroke="#7A4BA6" stroke-width="1"/>
-        <circle cx="20" cy="20" r="6.5" fill="#FF6B5A"/>
-        <circle cx="20" cy="20" r="1.8" fill="#FBF7F2"/>
+        <circle cx="20" cy="20" r="19" fill="#2F6B3F"/>
+        <path d="M10 14.5c3.5-1.2 7-.8 10 1.3v13c-3-2.1-6.5-2.5-10-1.3z" fill="#FFFDF7"/>
+        <path d="M30 14.5c-3.5-1.2-7-.8-10 1.3v13c3-2.1 6.5-2.5 10-1.3z" fill="#E5EEDD"/>
+        <path d="M20 15.8c.4-3.4 2.6-5.6 6-6.3-.4 3.4-2.6 5.6-6 6.3z" fill="#C9A25B"/>
       </svg>
       <div>
-        <h1>Resonance Help Desk</h1>
-        <p class="subtitle">Answers from Resonance's help documents</p>
+        <h1>Folio Help Desk</h1>
+        <p class="subtitle">Answers from Folio's help documents</p>
       </div>
     </header>
 
     <section class="card" aria-label="Ask a question">
       <form id="ask-form">
-        <label for="question">Ask a question about Resonance</label>
+        <label for="question">Ask a question about Folio</label>
         <textarea id="question" name="question" rows="3" maxlength="500"
-          placeholder="For example: can I download music on my phone?"></textarea>
+          placeholder="For example: can I read books offline on my phone?"></textarea>
         <div class="row">
           <span class="counter" id="counter" aria-live="off">0 / 500</span>
           <button type="submit" class="primary" id="ask" disabled>Ask</button>
@@ -158,10 +159,10 @@
       <p class="try" id="try-label">Try one</p>
       <ul class="chips" aria-labelledby="try-label">
         <li><button type="button" class="chip">How much is the Family plan?</button></li>
-        <li><button type="button" class="chip">How many devices can I download music on?</button></li>
+        <li><button type="button" class="chip">How many devices can I download books on?</button></li>
         <li><button type="button" class="chip">How long can I stay on the Student plan?</button></li>
-        <li><button type="button" class="chip">Does Resonance work on Apple Watch?</button></li>
-        <li><button type="button" class="chip">When do artists get paid?</button></li>
+        <li><button type="button" class="chip">Does Folio work on Kindle?</button></li>
+        <li><button type="button" class="chip">Do unused audiobook credits roll over?</button></li>
         <li><button type="button" class="chip">Can I get a refund on the yearly plan?</button></li>
       </ul>
     </section>
@@ -169,7 +170,7 @@
     <section class="card answer" id="answer" aria-live="polite" aria-label="Answer" hidden></section>
 
     <footer>
-      Resonance is a fictional service made for a class project · <a href="/docs">API docs</a>
+      Folio is a fictional service made for a class project · <a href="/docs">API docs</a>
     </footer>
   </main>
 
@@ -302,7 +303,7 @@
           showAnswer(await response.json());
         }
       } catch (err) {
-        showError("Can't reach the Resonance server. Check that it's running.");
+        showError("Can't reach the Folio server. Check that it's running.");
       } finally {
         busy = false;
         updateControls();

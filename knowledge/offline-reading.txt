@@ -1,0 +1,19 @@
+# Offline Reading and Downloads
+
+Offline reading lets you save ebooks and audiobooks to a device so you can read or listen with no internet connection, for example on a plane or while travelling. Every Folio reader can download books they have bought. Downloading borrowed books from the Unlimited catalog needs a paid plan (Unlimited, Family, or Student).
+
+How to download: open a book in your library and tap the downward arrow icon under the cover. A filled arrow means the book is fully downloaded. Audiobooks download chapter by chapter, so you can start listening before the whole audiobook has finished downloading.
+
+Download limits: each account can have books downloaded on up to 6 devices at the same time. Each device can hold up to 50 downloaded Unlimited books; books you bought do not count toward that limit. If you try to download on a seventh device, Folio asks you to remove one of the others first. To free up a device slot, go to Account, then Devices, then Offline devices, and choose Remove next to the device you no longer use.
+
+Stay online once every 30 days: downloaded Unlimited books stay readable only if the device connects to the internet at least once every 30 days, so Folio can confirm your plan is still active. If a device has been offline for longer, its borrowed books are locked until it reconnects. Nothing is deleted, and they unlock automatically when the device is back online. Books you bought never lock.
+
+Audiobook quality: in Settings, then Audio, then Download quality, you can choose Standard (64 kbps) or High (128 kbps). The default is Standard. An average 10 hour audiobook takes about 290 MB in Standard and about 580 MB in High. Changing the quality only affects new downloads.
+
+Mobile data: by default Folio downloads only over Wi-Fi. To allow downloads over mobile data, turn on Settings, then Downloads, then Download using cellular.
+
+Storage: on Android you can store downloads on an SD card in Settings, then Storage, then Download location. On iPhone and iPad downloads always use internal storage. To delete every download at once, open Settings, then Storage, then Remove all downloads.
+
+Returning books: when you return a borrowed Unlimited book, it is removed from all your devices the next time they go online. Your highlights, notes, and reading position are saved to your account, so they come back if you borrow the same book again later.
+
+If you cancel your paid plan or your payment fails, all downloaded Unlimited books are removed from your devices at the end of the billing period. Books you bought and their downloads are kept.

@@ -7,7 +7,7 @@ from datetime import UTC, datetime
 
 from app import config
 
-logger = logging.getLogger("resonance.log")
+logger = logging.getLogger("folio.log")
 _lock = threading.Lock()
 
 

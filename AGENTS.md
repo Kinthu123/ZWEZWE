@@ -1,6 +1,6 @@
-# Resonance Help Desk (RAG Q&A)
+# Folio Help Desk (RAG Q&A)
 
-A local RAG question answering service for Resonance, a fictional music streaming service (class assignment). Scope: `docs/scope/scope.md`.
+A local RAG question answering service for Folio, a fictional ebook and audiobook reading service (class assignment). Scope: `docs/scope/scope.md`.
 
 ## Stack
 

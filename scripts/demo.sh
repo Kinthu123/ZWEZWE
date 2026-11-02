@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Start the Resonance Help Desk for a live demo on the local network.
+# Start the Folio Help Desk for a live demo on the local network.
 # Checks Ollama and the models first, prints the URLs, and keeps the laptop awake while it runs.
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -23,7 +23,7 @@ for model in "${RAG_EMBED_MODEL:-embeddinggemma}" "${RAG_CHAT_MODEL:-qwen3:8b}";
 done
 
 IP="$(ipconfig getifaddr en0 2>/dev/null || ipconfig getifaddr en1 2>/dev/null || hostname -I 2>/dev/null | awk '{print $1}' || true)"
-echo "Resonance Help Desk"
+echo "Folio Help Desk"
 echo "  On this laptop:            http://localhost:$PORT"
 if [ -n "$IP" ]; then
   echo "  On a phone, same Wi-Fi:    http://$IP:$PORT"
