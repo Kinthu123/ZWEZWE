@@ -6,16 +6,14 @@ import re
 from app import config
 from app.embeddings import client
 
-logger = logging.getLogger("resonance.rag")
+logger = logging.getLogger("folio.rag")
 
-OFF_TOPIC_ANSWER = (
-    "I can only help with questions about Resonance, like plans, downloads, devices, accounts, artists, and refunds."
-)
+OFF_TOPIC_ANSWER = "I can only help with questions about Folio, like plans, offline reading, devices, accounts, audiobooks, and refunds."
 NOT_COVERED_ANSWER = (
     "The help documents don't cover that. You can ask a person through live chat in Help, then Contact us."
 )
 
-SYSTEM_PROMPT = f"""You are the Resonance Help Desk assistant. Resonance is a music streaming service.
+SYSTEM_PROMPT = f"""You are the Folio Help Desk assistant. Folio is an ebook and audiobook reading service.
 Answer the user's question using ONLY the help document excerpts provided.
 Rules:
 - Answer in English as one short paragraph of 2 to 5 sentences. Start directly with the answer. Do not use bullet points unless the user asks for steps.

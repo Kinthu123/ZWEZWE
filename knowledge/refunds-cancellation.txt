@@ -1,23 +1,19 @@
 # Refunds and Cancellation
 
-You can cancel any Premium plan at any time, with no cancellation fee. This guide explains what happens when you cancel, when you can get money back, and what happens if a payment fails.
+You can cancel your Folio plan at any time with no cancellation fee. To cancel, go to Account, then Plan, then Cancel plan, and follow the steps. If you subscribed through the Apple App Store or Google Play, you must cancel there instead, because they handle the billing.
 
-How to cancel: on the web or desktop app, go to Account, then Subscription, then Cancel Premium, and confirm. You cannot cancel from inside the iPhone or Android app unless you subscribed through the Apple App Store or Google Play, in which case you must cancel in your App Store or Google Play subscription settings instead; Resonance cannot cancel those for you.
+What happens when you cancel: your paid plan keeps working until the end of the current billing period, and you are not charged again. After that, your account moves to Folio Free. Borrowed Unlimited books are returned, unused audiobook credits expire, and downloaded Unlimited books are removed from your devices. Every ebook and audiobook you bought or got with a credit stays in your library for good, along with your highlights and notes.
 
-What happens after you cancel: you keep Premium until the end of the billing period you already paid for. After that the account moves to Resonance Free. Your playlists, Liked Songs, and followed artists are kept, but downloaded music is removed from your devices and you go back to ads and shuffle play on mobile. If you are the manager of a Family or Duo plan, cancelling moves every member to Resonance Free at the same time.
+Monthly plans: monthly charges are not refunded for partly used months. If you were charged for a new month by mistake and you have not borrowed a book, listened to an Unlimited audiobook, or used a credit since that charge, contact support within 7 days of the charge for a full refund of that month.
 
-Refunds on monthly plans: monthly payments are not refunded for partial months, and cancelling does not refund the current month. Resonance does refund in full when you were charged by mistake: a duplicate charge, a charge after you cancelled, or a charge for a trial you cancelled at least 24 hours before it ended. Request these within 60 days of the charge.
+Yearly plan: if you cancel the Unlimited yearly plan within 14 days of the charge, you get a full refund. After 14 days the yearly plan is not refunded, but it keeps working until the end of the paid year.
 
-Refunds on the yearly plan: if you cancel Premium Individual yearly within 14 days of being charged, you get a full refund and Premium ends right away. After 14 days there is no refund for the unused months, but you keep Premium until the end of the year you paid for.
+Free trial: if you cancel during the 30 day free trial, you are never charged. If you forget to cancel and are charged on day 31, you can ask for a refund within 48 hours of that first charge, as long as you have not used the month's audiobook credit.
 
-Gift cards and in app purchases: gift cards are not refundable and cannot be exchanged for cash. Refunds for subscriptions bought through the Apple App Store or Google Play are handled only by Apple or Google under their own policies.
+Ebook refunds: an ebook you bought can be returned within 7 days of purchase for a full refund, as long as you have read less than 10 percent of it. Go to Library, tap the three dots on the book, then Request refund.
 
-How refunds are paid: approved refunds go back to the original payment method and normally arrive within 5 to 10 business days. Refunds to PayPal usually arrive within 3 business days. Resonance cannot refund to a different card or account.
+Audiobook refunds: an audiobook bought with money can be refunded within 14 days of purchase if you have listened to less than 15 percent of it. Audiobooks got with a credit are returned for a credit instead, as described in the Audiobooks and Credits help page.
 
-Failed payments: if a payment fails, Resonance retries the charge 3 times over 7 days and emails you each time. Premium keeps working during those 7 days (the grace period). If all retries fail, the account moves to Resonance Free and downloads are removed. Updating your payment method in Account, then Payment, during the grace period charges the new method straight away and keeps Premium without interruption.
+How refunds are paid: refunds go back to the original payment method and take 5 to 10 business days to appear. Purchases paid with a Folio gift card are refunded to your gift card balance.
 
-Restarting Premium: you can resubscribe any time from Account, then Subscription. Your playlists are still there, but downloads must be downloaded again, and you are not eligible for another free trial.
-
-Deleting your account is different from cancelling: it permanently removes your profile, playlists, and listening history. Request it from Account, then Privacy, then Close account. You have 30 days to change your mind by signing in again; after 30 days the deletion cannot be undone. Close any paid plan first, because deleting the account does not refund the current billing period.
-
-Contacting support about a charge: use Help, then Contact us, then Billing in the app or at help.resonance.example. Live chat is open 24 hours a day, and billing emails to billing@resonance.example are answered within 2 business days.
+Deleting your account: to close your Folio account completely, cancel any paid plan first, then go to Account, then Privacy, then Delete account. Deleting your account removes your library permanently, including books you bought, and cannot be undone.

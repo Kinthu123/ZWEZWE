@@ -1,13 +1,13 @@
-# Resonance Help Desk
+# Folio Help Desk
 
-A retrieval augmented generation (RAG) question answering system for **Resonance**, a fictional music streaming service. You ask a question in a web page; the system finds the most relevant passages in Resonance's six help documents and a local LLM answers using only those passages, showing which documents it used and how long it took. Everything runs offline on one laptop.
+A retrieval augmented generation (RAG) question answering system for **Folio**, a fictional ebook and audiobook reading service. You ask a question in a web page; the system finds the most relevant passages in Folio's six help documents and a local LLM answers using only those passages, showing which documents it used and how long it took. Everything runs offline on one laptop.
 
 ## Assignment checklist
 
 | Requirement | Where it is |
 |---|---|
-| A fictional service (not the class company policy example) | Resonance, a music streaming service |
-| At least six documents, each on a different topic | [`knowledge/`](knowledge/): plans and pricing, offline downloads, family and student accounts, devices and playback, artists and royalties, refunds and cancellation |
+| A fictional service (not the class company policy example) | Folio, an ebook and audiobook reading service |
+| At least six documents, each on a different topic | [`knowledge/`](knowledge/): plans and pricing, offline reading and downloads, family and student accounts, devices and reading apps, audiobooks and credits, refunds and cancellation |
 | A RAG system that answers from those documents | [`app/vector_store.py`](app/vector_store.py) (chunking, embeddings, Chroma retrieval) and [`app/rag.py`](app/rag.py) (grounded prompt and generation) |
 | A different or larger LLM than in class | `qwen3:8b` (8 billion parameters) instead of the class's `qwen3:1.7b` |
 | An API | FastAPI: `POST /ask`, `POST /search`, `GET /health`, `POST /documents`, interactive docs at `/docs` |
@@ -18,7 +18,7 @@ A retrieval augmented generation (RAG) question answering system for **Resonance
 ```
 question ──► embed with embeddinggemma ──► Chroma: top 4 chunks by cosine similarity
                                                 │
-                     best score < 0.30? ── yes ─┴─► "I can only help with questions about Resonance…" (no LLM call)
+                     best score < 0.30? ── yes ─┴─► "I can only help with questions about Folio…" (no LLM call)
                                                 │ no
                                                 ▼
              qwen3:8b with a strict "answer only from these excerpts" prompt
@@ -89,14 +89,14 @@ One per document, plus the edge cases. Expected answers come straight from the d
 
 | Question | Document | Expected answer |
 |---|---|---|
-| How much is the Family plan? | Plans and Pricing | $17.99 per month for up to 6 accounts at the same address |
-| How many devices can I download music on? | Offline Downloads | Up to 5 devices, up to 10,000 tracks each |
+| How much is the Family plan? | Plans and Pricing | $17.99 per month for up to 6 accounts at the same address, with 2 audiobook credits |
+| How many devices can I download books on? | Offline Reading and Downloads | Up to 6 devices, up to 50 Unlimited books each (bought books don't count) |
 | How long can I stay on the Student plan? | Family and Student Accounts | At most 48 months, reverified every 12 months |
-| Does Resonance work on Apple Watch? | Devices and Playback | Yes, watchOS 9 or later, with offline downloads on Premium |
-| When do artists get paid? | Artists and Royalties | 45 days after the end of each month, once the balance reaches $10 |
-| Can I get a refund on the yearly plan? | Refunds and Cancellation | Full refund within 14 days of the charge; after that, Premium continues to the end of the year |
+| Does Folio work on Kindle? | Devices and Reading Apps | No; it works on Kobo (2021 or later) and PocketBook e-readers |
+| Do unused audiobook credits roll over? | Audiobooks and Credits | Yes, up to 6 unused credits; they expire if you cancel |
+| Can I get a refund on the yearly plan? | Refunds and Cancellation | Full refund within 14 days of the charge; after that, the plan keeps working to the end of the paid year |
 | What is the capital of France? | (off topic) | Instant refusal, sources empty, `retrieval only` |
-| How do I reset my password? | (not covered) | "The help documents don't cover that…" plus a pointer to live chat |
+| Can I print pages from an ebook? | (not covered) | "The help documents don't cover that…" plus a pointer to live chat |
 
 **Adding a document live**: restart with `RAG_ALLOW_UPLOADS=1 ./scripts/demo.sh`, open `/docs`, use `POST /documents` with name `podcasts` and content `# Podcasts\n\nPodcast episodes can be played at speeds from 0.5x to 3x.`, then ask "What playback speeds do podcasts support?" in the page.
 
@@ -136,7 +136,7 @@ app/
   question_log.py   JSON Lines question log
   main.py           FastAPI app and endpoints
 web/index.html      the web client (self contained, works offline)
-knowledge/          the six Resonance help documents
+knowledge/          the six Folio help documents
 scripts/demo.sh     LAN demo launcher
 docs/scope/         build plan
 docs/specs/         design decisions (0001 to 0005)
@@ -145,6 +145,6 @@ design.md           visual design of the page
 
 ## What we learned
 
-- **Write help documents as prose, not mixed lists.** A bullet list of seven device types embedded poorly: the Apple Watch line scored 0.31 against "Does Resonance work on Apple Watch?", while a prose sentence naming the topic scored 0.72. Rewriting that section as short paragraphs fixed retrieval.
+- **Write help documents as prose, not mixed lists.** A bullet list of seven device types embedded poorly: the Apple Watch line scored 0.31 against "Does Resonance work on Apple Watch?", while a prose sentence naming the topic scored 0.72. Rewriting that section as short paragraphs fixed retrieval (measured on the earlier music service version of the documents).
 - **A relevance cutoff beats prompt only refusals.** Measured scores were about 0.5 to 0.6 for real questions and 0.1 to 0.15 for off topic ones, so a 0.30 cutoff declines off topic questions instantly and the small model never gets the chance to answer from general knowledge.
 - **Ask for a paragraph.** Allowing bullet lists made `qwen3:8b` answer in terse one line bullets that dropped details like "up to 6 accounts"; asking for one short paragraph fixed both.

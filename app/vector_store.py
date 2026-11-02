@@ -1,4 +1,4 @@
-"""Chunking, Chroma storage, and retrieval for the Resonance help documents (spec 0002)."""
+"""Chunking, Chroma storage, and retrieval for the Folio help documents (spec 0002)."""
 
 import logging
 import re
@@ -11,7 +11,7 @@ from chromadb.config import Settings
 from app import config
 from app.embeddings import embed_documents, embed_query
 
-logger = logging.getLogger("resonance.index")
+logger = logging.getLogger("folio.index")
 
 SOURCE_PATTERN = re.compile(r"[A-Za-z0-9_-]+")
 FILE_PATTERN = re.compile(r"[A-Za-z0-9_-]+\.txt")

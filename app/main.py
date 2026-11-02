@@ -17,12 +17,12 @@ from app.errors import ollama_errors
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logging.getLogger("httpx").setLevel(logging.WARNING)
-logger = logging.getLogger("resonance")
+logger = logging.getLogger("folio")
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    logger.info("Starting Resonance Help Desk (chat model %s, embed model %s)", config.CHAT_MODEL, config.EMBED_MODEL)
+    logger.info("Starting Folio Help Desk (chat model %s, embed model %s)", config.CHAT_MODEL, config.EMBED_MODEL)
     status = await asyncio.to_thread(vector_store.rebuild_index)
     logger.info("Index: %s", status)
     await asyncio.to_thread(rag.warm_up)
@@ -30,8 +30,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Resonance Help Desk",
-    description="Ask questions about Resonance, a fictional music streaming service, answered from its help documents.",
+    title="Folio Help Desk",
+    description="Ask questions about Folio, a fictional ebook and audiobook service, answered from its help documents.",
     version="0.1.0",
     lifespan=lifespan,
 )
@@ -103,7 +103,7 @@ def index() -> FileResponse:
 
 @app.post("/ask", response_model=AskResponse)
 def ask(request: AskRequest) -> AskResponse:
-    """Answer a question about Resonance from its help documents, with sources and timing."""
+    """Answer a question about Folio from its help documents, with sources and timing."""
     start = time.perf_counter()
     try:
         answer, sources, model = _answer(request.question, request.top_k)
